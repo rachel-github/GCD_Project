@@ -9,7 +9,7 @@ of the Getting and Cleaning Data class on Coursera.
 
     The readme file accompanying the original data set downloaded from 
     https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip.  
-    Among others, it describes how the data was obtain and how the data is organized 
+    Among others, it describes how the data was obtained and how the data is organized 
     in the files included in the data set.  
     
 - **features_info.txt**  
