@@ -22,7 +22,7 @@ following:
 The following preprocessing steps were performed on the original data
 set to produce the final tidy data set for this project.
 
-1.  The activity labels, variable names, test set x values, test set y
+-  The activity labels, variable names, test set x values, test set y
     values, test set subject data, training set x values, training set y
     values, and training set subject data were read into R.
 
@@ -39,7 +39,7 @@ set to produce the final tidy data set for this project.
     y.train <- read.table("./train/y_train.txt")
     subject.train <- read.table("./train/subject_train.txt")
 
-2.  The subject data, X variable data (features data), and Y data
+-  The subject data, X variable data (features data), and Y data
     (activity data) were combined in the test set and training set
     respectively.
 
@@ -48,14 +48,14 @@ set to produce the final tidy data set for this project.
     data.test <- cbind(subject.test, y.test, x.test)
     data.train <- cbind(subject.train, y.train, x.train)
 
-3.  Observations from the test set and the training set were merged into
+-  Observations from the test set and the training set were merged into
     one data set.
 
 <!-- -->
 
     data.all <- rbind(data.test, data.train)
 
-4.  The columns of the merged data set were labelled with descriptive
+-  The columns of the merged data set were labelled with descriptive
     names.
 
 <!-- -->
@@ -63,7 +63,7 @@ set to produce the final tidy data set for this project.
     names(data.all)[1:2] <- c("subject", "activity")
     names(data.all)[3:length(data.all)] <- as.character(features[,2])
 
-5.  The values of the *activity* column were replaced with descriptive
+-  The values of the *activity* column were replaced with descriptive
     activity names.
 
 <!-- -->
@@ -71,7 +71,7 @@ set to produce the final tidy data set for this project.
     data.all$activity <- factor(data.all$activity, levels = activity.labels[,1], 
                                 labels=activity.labels[,2])
 
-6.  Only the variables containing the mean and standard deviations of
+-  Only the variables containing the mean and standard deviations of
     the measurements were included in tidy data set. In the features.txt
     file, these are the variables with either *mean()* or *std()* in
     their variable names.
@@ -83,7 +83,7 @@ set to produce the final tidy data set for this project.
 
     data.mean.std <- data.all[,c(1,2, index.mean,index.std)]
 
-7.  Fixed the variable names to remove the dashes("-") and parentheses
+-  Fixed the variable names to remove the dashes("-") and parentheses
     ("()"). Also fixed the names containing "BodyBody" and replaced that
     substring with "Body".
 
@@ -95,7 +95,7 @@ set to produce the final tidy data set for this project.
     varnames <- gsub("BodyBody", "Body", varnames)
     names(data.mean.std) <- varnames
 
-8.  The final tidy data set was created with the average of each
+-  The final tidy data set was created with the average of each
     variable for each activity and each subject.
 
 <!-- -->
