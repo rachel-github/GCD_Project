@@ -1,6 +1,4 @@
 
-library(reshape)
-
 # read the data from the .txt files
 # ----------------------------------------------------------
 activity.labels <- read.table("activity_labels.txt")
@@ -48,11 +46,21 @@ index.std <- grep("-std\\(\\)", names(data.all))
 data.mean.std <- data.all[,c(1,2, index.mean,index.std)]
 # ----------------------------------------------------------
 
+# fix the variable names to remove the "-" and "()"
+# ----------------------------------------------------------
+varnames <- names(data.mean.std)
+varnames <- gsub("-", "", varnames)
+varnames <- gsub("\\(\\)", "", varnames)
+varnames <- gsub("BodyBody", "Body", varnames)
+names(data.mean.std) <- varnames
+# ----------------------------------------------------------
 
 # create the tidy data set containing the average of each variable
 # ----------------------------------------------------------
+library(reshape)
 data.molten <- melt(data.mean.std, id.vars=c("subject", "activity"))
 data.varmeans <- cast(data.molten, subject + activity ~ variable, mean)
+# ----------------------------------------------------------
 
 
 # output the tidy data set to file

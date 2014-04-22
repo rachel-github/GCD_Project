@@ -84,6 +84,9 @@ of the Getting and Cleaning Data class on Coursera.
     6. Extracting a subset of the data containing only the variables representing
        the mean and standard deviation measurements
        
+    7. Fixing the variable names to remove dashes, parentheses, and duplicated
+       substrings.
+       
     7. Creating a tidy data set containing the average of each variable for each
        activity and subject
 
